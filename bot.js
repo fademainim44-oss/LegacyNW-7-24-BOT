@@ -8,7 +8,7 @@ app.listen(process.env.PORT || 3000, () => console.log('[WEB] Uptime sunucusu ba
 // -------------------------------------------
 
 const OPTIONS = {
-    host: 'LegacyNetwork.enderman.cloud', // Sunucu IP
+    host: 'legacynetwork.funserver.top', // Sunucu IP
     username: 'LegacyNWBot',              // Botun ismi
     version: false                       // Sürümü otomatik algıla
 };
