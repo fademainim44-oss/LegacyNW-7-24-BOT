@@ -25,11 +25,11 @@ function createBot() {
             console.log('[BOT] Kayıt olma ve Giriş yapma komutları gönderiliyor...');
             
             // İlk kez giriyorsa diye register komutu
-            bot.chat('/register deneme123 deneme123');
+            bot.chat('/register legacy123 legacy123');
             
             // Sonraki girişler için login komutu (İkisi de peş peşe atılır, hangisi lazımsa o çalışır)
             setTimeout(() => {
-                bot.chat('/login deneme123');
+                bot.chat('/login legacy123');
             }, 1000); // 1 saniye sonra login at
             
         }, 3000); // Spawn olduktan 3 saniye sonra başla
