@@ -17,16 +17,23 @@ function createBot() {
     console.log('[BOT] Sunucuya bağlanılıyor: ' + OPTIONS.host);
     const bot = mineflayer.createBot(OPTIONS);
 
+    let hasAuthenticated = false;
+
     bot.on('spawn', () => {
         console.log('[BOT] Sunucuya başarıyla giriş yapıldı!');
+        hasAuthenticated = false; // Yeniden doğduğunda sıfırla
     });
 
     // Kayıt ve Giriş İşlemleri (Skript/AuthMe) - Gelen mesaja göre akıllı tepki
     bot.on('message', (message) => {
         const msg = message.toString().toLowerCase();
         
+        // Eğer zaten giriş/kayıt işlemi yaptıysa, chat'ten gelen yazıları görmezden gel
+        if (hasAuthenticated) return;
+        
         // Sunucu "register" veya "kayıt" kelimesi içeren bir yazı yollarsa:
         if (msg.includes('/register') || msg.includes('kayit') || msg.includes('kayıt')) {
+            hasAuthenticated = true;
             setTimeout(() => {
                 bot.chat('/register babapro babapro');
                 console.log('[AUTH] Sunucunun isteği üzerine Kayıt olundu.');
@@ -34,6 +41,7 @@ function createBot() {
         } 
         // Sunucu "login" veya "şifre" kelimesi içeren bir yazı yollarsa:
         else if (msg.includes('/login') || msg.includes('sifre') || msg.includes('şifre') || msg.includes('giris') || msg.includes('giriş')) {
+            hasAuthenticated = true;
             setTimeout(() => {
                 bot.chat('/login babapro');
                 console.log('[AUTH] Sunucunun isteği üzerine Giriş yapıldı.');
