@@ -28,14 +28,14 @@ function createBot() {
         // Sunucu "register" veya "kayıt" kelimesi içeren bir yazı yollarsa:
         if (msg.includes('/register') || msg.includes('kayit') || msg.includes('kayıt')) {
             setTimeout(() => {
-                bot.chat('/register deneme123 deneme123');
+                bot.chat('/register babapro babapro');
                 console.log('[AUTH] Sunucunun isteği üzerine Kayıt olundu.');
             }, 1000);
         } 
         // Sunucu "login" veya "şifre" kelimesi içeren bir yazı yollarsa:
         else if (msg.includes('/login') || msg.includes('sifre') || msg.includes('şifre') || msg.includes('giris') || msg.includes('giriş')) {
             setTimeout(() => {
-                bot.chat('/login deneme123');
+                bot.chat('/login babapro');
                 console.log('[AUTH] Sunucunun isteği üzerine Giriş yapıldı.');
             }, 1000);
         }
