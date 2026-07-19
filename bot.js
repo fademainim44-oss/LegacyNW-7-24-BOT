@@ -19,20 +19,26 @@ function createBot() {
 
     bot.on('spawn', () => {
         console.log('[BOT] Sunucuya başarıyla giriş yapıldı!');
+    });
+
+    // Kayıt ve Giriş İşlemleri (Skript/AuthMe) - Gelen mesaja göre akıllı tepki
+    bot.on('message', (message) => {
+        const msg = message.toString().toLowerCase();
         
-        // Sunucuya giriş yapınca biraz bekleyip giriş komutlarını at
-        setTimeout(() => {
-            console.log('[BOT] Kayıt olma ve Giriş yapma komutları gönderiliyor...');
-            
-            // İlk kez giriyorsa diye register komutu
-            bot.chat('/register legacy123 legacy123');
-            
-            // Sonraki girişler için login komutu (İkisi de peş peşe atılır, hangisi lazımsa o çalışır)
+        // Sunucu "register" veya "kayıt" kelimesi içeren bir yazı yollarsa:
+        if (msg.includes('/register') || msg.includes('kayit') || msg.includes('kayıt')) {
             setTimeout(() => {
-                bot.chat('/login legacy123');
-            }, 1000); // 1 saniye sonra login at
-            
-        }, 3000); // Spawn olduktan 3 saniye sonra başla
+                bot.chat('/register deneme123 deneme123');
+                console.log('[AUTH] Sunucunun isteği üzerine Kayıt olundu.');
+            }, 1000);
+        } 
+        // Sunucu "login" veya "şifre" kelimesi içeren bir yazı yollarsa:
+        else if (msg.includes('/login') || msg.includes('sifre') || msg.includes('şifre') || msg.includes('giris') || msg.includes('giriş')) {
+            setTimeout(() => {
+                bot.chat('/login deneme123');
+                console.log('[AUTH] Sunucunun isteği üzerine Giriş yapıldı.');
+            }, 1000);
+        }
     });
 
     bot.on('error', err => {
