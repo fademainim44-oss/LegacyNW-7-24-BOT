@@ -8,7 +8,7 @@ app.listen(process.env.PORT || 3000, () => console.log('[WEB] Uptime sunucusu ba
 // -------------------------------------------
 
 const OPTIONS = {
-    host: 'legacynetwork.funserver.top', // Sunucu IP
+    host: 'legacynw.duckdns.org', // Sunucu IP
     username: 'LegacyNWBot',              // Botun ismi
     version: false                       // Sürümü otomatik algıla
 };
